@@ -25,7 +25,6 @@ function changeTheme() {
   }
 
   localStorage.setItem('theme', body.className);
-  localStorage.setItem('checked', JSON.stringify(checkbox.checked));
 }
 
 function currentTheme() {
@@ -33,13 +32,9 @@ function currentTheme() {
   if (savedTheme) {
     body.className = savedTheme;
   }
+  if (savedTheme === DARK) {
+    checkbox.checked = true;
+  }
 }
 
-function currentConditionInput() {
-  const checkedInput = localStorage.getItem('checked');
-  const parseCheckedInput = JSON.parse(checkedInput);
-  checkbox.checked = parseCheckedInput;
-}
-
-currentConditionInput();
 currentTheme();
